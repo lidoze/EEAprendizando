@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>W3Schools Pro Clone</title>
+    <!-- Vinculando o arquivo CSS separado -->
+    <link rel="stylesheet" href="css.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 10px;">
+            <a href="#" class="nav-logo" onclick="switchTab('html')">W3Schools Pro</a>
+            <div class="nav-links">
+                <button class="nav-btn active" id="btn-html" onclick="switchTab('html')">HTML</button>
+                <button class="nav-btn" id="btn-css" onclick="switchTab('css')">CSS</button>
+                <button class="nav-btn" id="btn-js" onclick="switchTab('js')">JavaScript</button>
+                <button class="nav-btn" id="btn-php" onclick="switchTab('php')">PHP</button>
+                <button class="nav-btn" id="btn-mysql" onclick="switchTab('mysql')">MySQL</button>
+            </div>
+        </div>
+        
+        <div class="search-container">
+            <input type="text" id="search-input" class="search-input" placeholder="O que você quer aprender hoje?">
+            <button class="search-btn" onclick="executeSearch()">Buscar</button>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <aside class="sidebar" id="sidebar-container"></aside>
+
+        <main class="content-area">
+            <!-- SEÇÕES HTML -->
+            <div id="content-html-home" class="content-section active">
+                <h1>Introdução ao HTML</h1>
+                <p>HTML (HyperText Markup Language) é a espinha dorsal de qualquer página web. É através dele que definimos títulos, parágrafos, imagens e links que estruturam a internet.</p>
+                <div class="code-example">
+                    <h4>Exemplo Estrutural:</h4>
+                    <div class="code-box" id="code-html-home">&lt;!DOCTYPE html&gt;&#10;&lt;html&gt;&#10;&lt;body&gt;&#10;  &lt;h1&gt;Bem-vindo ao W3Schools Pro&lt;/h1&gt;&#10;  &lt;p&gt;O seu clone está mais moderno e bonito!&lt;/p&gt;&#10;&lt;/body&gt;&#10;&lt;/html&gt;</div>
+                    <button class="run-btn" onclick="runCode('code-html-home')">Testar Código</button>
+                </div>
+            </div>
+            <div id="content-html-elements" class="content-section">
+                <h1>Elementos HTML</h1>
+                <p>Elementos organizam e envelopam blocos visuais. Eles usam tags de abertura e fechamento para gerenciar as regras estruturais da tela.</p>
+                <div class="code-example">
+                    <h4>Exemplo:</h4>
+                    <div class="code-box" id="code-html-elements">&lt;a href="https://google.com"&gt;Visitar o Buscador&lt;/a&gt;</div>
+                    <button class="run-btn" onclick="runCode('code-html-elements')">Testar Código</button>
+                </div>
+            </div>
+
+            <!-- SEÇÕES CSS -->
+            <div id="content-css-home" class="content-section">
+                <h1>Introdução ao CSS</h1>
+                <p>O CSS (Cascading Style Sheets) transforma códigos HTML brutos em interfaces ricas, aplicando fontes, cores personalizadas, grids e animações sofisticadas.</p>
+                <div class="code-example">
+                    <h4>Exemplo de Design:</h4>
+                    <div class="code-box" id="code-css-home">body {&#10;  background-color: #f8fafc;&#10;  color: #0f172a;&#10;}</div>
+                    <button class="run-btn" onclick="runCode('code-css-home')">Testar Código</button>
+                </div>
+            </div>
+            <div id="content-css-syntax" class="content-section">
+                <h1>Sintaxe CSS</h1>
+                <p>Regras limpas de CSS mapeiam propriedades visuais associadas a seletores HTML organizados.</p>
+                <div class="code-example">
+                    <h4>Exemplo:</h4>
+                    <div class="code-box" id="code-css-syntax">.card-w3 {&#10;  border-radius: 12px;&#10;  box-shadow: 0 4px 20px rgba(0,0,0,0.1);&#10;}</div>
+                    <button class="run-btn" onclick="runCode('code-css-syntax')">Testar Código</button>
+                </div>
+            </div>
+
+            <!-- SEÇÕES JAVASCRIPT -->
+            <div id="content-js-home" class="content-section">
+                <h1>Introdução ao JavaScript</h1>
+                <p>JavaScript controla o comportamento da página. Com ele, você valida formulários, cria ações dinâmicas ao clicar em botões e altera elementos em tempo real.</p>
+                <div class="code-example">
+                    <h4>Exemplo Dinâmico:</h4>
+                    <div class="code-box" id="code-js-home"><span class="hl-key">const</span> site = <span class="hl-txt">"W3Schools Pro"</span>;&#10;console.log(<span class="hl-txt">`Bem vindo ao ${site}!`</span>);</div>
+                    <button class="run-btn" onclick="runCode('code-js-home')">Executar Script</button>
+                </div>
+            </div>
+            <div id="content-js-variables" class="content-section">
+                <h1>Variáveis em JavaScript</h1>
+                <p>Armazene dados dinâmicos utilizando escopos seguros através das diretrizes modernas do ECMA.</p>
+                <div class="code-example">
+                    <h4>Exemplo:</h4>
+                    <div class="code-box" id="code-js-variables"><span class="hl-key">let</span> curtidas = 1500;&#10;<span class="hl-key">const</span> ativo = <span class="hl-key">true</span>;</div>
+                    <button class="run-btn" onclick="runCode('code-js-variables')">Executar Script</button>
+                </div>
+            </div>
+
+            <!-- SEÇÕES PHP -->
+            <div id="content-php-home" class="content-section">
+                <h1>Introdução ao PHP</h1>
+                <p>O PHP é uma linguagem focada no Back-End. Ele processa dados no servidor antes de enviar a página para o navegador do usuário.</p>
+                <div class="code-example">
+                    <h4>Exemplo de Script PHP:</h4>
+                    <div class="code-box" id="code-php-home">&lt;?php&#10;echo "Olá! Este texto foi processado no Servidor.";&#10;?&gt;</div>
+                    <button class="run-btn" onclick="runCode('code-php-home')">Testar Código PHP</button>
+                </div>
+            </div>
+            <div id="content-php-syntax" class="content-section">
+                <h1>Sintaxe PHP</h1>
+                <p>Os blocos de código PHP começam com <code>&lt;?php</code> e terminam com <code>?&gt;</code>. Suas variáveis sempre começam com o símbolo <code>\$</code>.</p>
+                <div class="code-example">
+                    <h4>Exemplo de Sintaxe:</h4>
+                    <div class="code-box" id="code-php-syntax">&lt;?php&#10;\$txt = "W3Schools";&#10;echo "Eu adoro o \$txt!";&#10;?&gt;</div>
+                    <button class="run-btn" onclick="runCode('code-php-syntax')">Testar Código PHP</button>
+                </div>
+            </div>
+
+            <!-- SEÇÕES MYSQL -->
+            <div id="content-mysql-home" class="content-section">
+                <h1>Introdução ao MySQL</h1>
+                <p>O MySQL é um sistema de banco de dados relacional que organiza e armazena as informações do seu site de forma rápida e segura através de tabelas.</p>
+                <div class="code-example">
+                    <h4>Exemplo de Consulta SQL:</h4>
+                    <div class="code-box" id="code-mysql-home"><span class="hl-key">SELECT</span> * <span class="hl-key">FROM</span> usuarios <span class="hl-key">WHERE</span> status = <span class="hl-txt">'ativo'</span>;</div>
+                    <button class="run-btn" onclick="runCode('code-mysql-home')">Executar Query SQL</button>
+                </div>
+            </div>
+            <div id="content-mysql-create" class="content-section">
+                <h1>Criar Tabelas (Create Table)</h1>
+                <p>A instrução <code>CREATE TABLE</code> estrutura uma nova tabela definindo o nome das colunas e os tipos de dados que ela aceitará.</p>
+                <div class="code-example">
+                    <h4>Exemplo SQL:</h4>
+                    <div class="code-box" id="code-mysql-create"><span class="hl-key">CREATE TABLE</span> clientes (&#10;  id int NOT NULL,&#10;  nome varchar(255) NOT NULL,&#10;  email varchar(255)&#10;);</div>
+                    <button class="run-btn" onclick="runCode('code-mysql-create')">Executar Query SQL</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Vinculando o arquivo JavaScript separado -->
+    <script src="js.js"></script>
+</body>
+</html>

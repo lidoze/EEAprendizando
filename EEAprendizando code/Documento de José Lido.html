@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EEAprendizando code | Aprenda HTML, CSS, JavaScript, PHP e MySQL</title>
+    <meta name="description" content="Tutoriais interativos de HTML, CSS, JavaScript, PHP e MySQL com editor ao vivo, quizzes e banco de dados real.">
+    <link rel="stylesheet" href="css.css">
+</head>
+<body>
+
+    <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyCvOmrRLdFjR7csXzb3qU19mSsHn6MJ1OQ",
+    authDomain: "eea-code.firebaseapp.com",
+    projectId: "eea-code",
+    storageBucket: "eea-code.firebasestorage.app",
+    messagingSenderId: "877498934574",
+    appId: "1:877498934574:web:63d8220c1944d40dc146bf",
+    measurementId: "G-V0GN30HM41"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
+
+<header class="topbar">
+    <button class="icon-btn menu-btn" onclick="toggleSidebar()" aria-label="Abrir menu">☰</button>
+    <a class="logo" href="#/">EEA<span>code</span></a>
+    <nav class="tabs" id="tabs" aria-label="Linguagens"></nav>
+
+    <div class="search">
+        <input type="search" id="search-input" placeholder="Buscar lições…  ( / )" autocomplete="off" aria-label="Buscar lições">
+        <div id="search-results" class="search-results hidden"></div>
+    </div>
+
+    <button class="icon-btn" id="theme-btn" onclick="toggleTheme()" aria-label="Alternar tema">🌙</button>
+    <div id="user-area" class="user-area"></div>
+</header>
+
+<div class="layout">
+    <aside class="sidebar" id="sidebar"></aside>
+    <div class="scrim" onclick="toggleSidebar()"></div>
+    <main class="content" id="content"></main>
+</div>
+
+<!-- Editor "Experimente você mesmo" -->
+<div id="try-modal" class="modal hidden">
+    <div class="try-box">
+        <div class="try-head">
+            <strong id="try-title">Editor</strong>
+            <div class="try-actions">
+                <button class="btn" onclick="runTry()">▶ Executar</button>
+                <button class="btn ghost" id="try-reset-lab" onclick="resetLab()">Restaurar tabela</button>
+                <button class="btn ghost" onclick="restoreTry()">Restaurar código</button>
+                <button class="btn ghost" onclick="closeTry()">✕ Fechar</button>
+            </div>
+        </div>
+        <div class="try-body">
+            <div class="try-pane">
+                <div class="pane-label">Seu código <small>(Ctrl + Enter executa)</small></div>
+                <textarea id="try-editor" spellcheck="false"></textarea>
+            </div>
+            <div class="try-pane">
+                <div class="pane-label">Resultado</div>
+                <iframe id="try-frame" sandbox="allow-scripts allow-modals" title="Resultado"></iframe>
+                <div id="try-sql" class="try-sql hidden"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Conta (login / cadastro) com MySQL -->
+<div id="auth-modal" class="modal hidden" onclick="if(event.target===this)closeAuth()">
+    <div class="auth-box">
+        <button class="close" onclick="closeAuth()" aria-label="Fechar">✕</button>
+        <h2>Sua conta</h2>
+        <p class="muted">Entre para salvar o progresso das lições no banco EEAprendizando.</p>
+
+        <div class="auth-tabs">
+            <button id="tab-login" class="on" onclick="authTab('login')">Entrar</button>
+            <button id="tab-reg" onclick="authTab('reg')">Criar conta</button>
+        </div>
+
+        <form id="form-login" onsubmit="event.preventDefault(); doLogin();">
+            <input type="email" id="log-email" placeholder="E-mail" required autocomplete="email">
+            <input type="password" id="log-senha" placeholder="Senha" required autocomplete="current-password">
+            <button class="btn big" type="submit">Entrar (SELECT)</button>
+        </form>
+
+        <form id="form-reg" class="hidden" onsubmit="event.preventDefault(); doRegister();">
+            <input type="text" id="reg-nome" placeholder="Nome" required autocomplete="name">
+            <input type="email" id="reg-email" placeholder="E-mail" required autocomplete="email">
+            <input type="password" id="reg-senha" placeholder="Senha (mín. 6 caracteres)" required minlength="6" autocomplete="new-password">
+            <button class="btn big" type="submit">Criar conta (INSERT)</button>
+        </form>
+
+        <div id="auth-status" class="status"></div>
+
+        <h4 class="log-title">Código SQL executado <button class="link-btn" onclick="clearLog()">limpar</button></h4>
+        <pre class="log" id="sql-log"><code>Nenhum comando executado ainda…</code></pre>
+    </div>
+</div>
+
+<div id="toast" class="toast hidden"></div>
+
+<script src="lessons.js"></script>
+<script src="js.js"></script>
+</body>
+</html>

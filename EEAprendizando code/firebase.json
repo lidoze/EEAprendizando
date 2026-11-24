@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "site": "eea-code-f87f5",
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
